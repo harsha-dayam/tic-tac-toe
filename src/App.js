@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   checkWinner() {
-    // logic to check if x's or o's won
+    // console.log(this.state.box);
   }
 
   setUserValue (el, value) {
@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   handleClick(e) {
-	const { currentValue} = this.state,
+	const { currentValue } = this.state,
 		el = e.target;
 	debugger;
 			
@@ -49,33 +49,32 @@ class App extends React.Component {
 		} else {
 			this.setUserValue(el, "O");
 		}
-	}	
 
-	this.setState({
-		currentValue: currentValue ^ 1
-	})
+		this.setState({
+			currentValue: currentValue ^ 1
+		})
+	}
   }
 
   render() {
 		return (
 			<div className="tic-tac-toe">
-			<table id="board">
-				<tbody>
-					{[[1, 2, 3].map((value, index1) => (
-						// 3 rows
-						<tr key={index1}>
-							{[1, 2, 3].map((value, index2) => 
-								// 3 cells in each row
-								<td key={index2} data-row={index1} data-column={index2} onClick={this._handleClick}></td>
-							)}
-						</tr>
-					))]}
-				</tbody>
-			</table>
+				<table id="board">
+					<tbody>
+						{[[1, 2, 3].map((value, index1) => (
+							// 3 rows
+							<tr key={index1}>
+								{[1, 2, 3].map((value, index2) => 
+									// 3 cells in each row
+									<td key={index2} data-row={index1} data-column={index2} onClick={this._handleClick}></td>
+								)}
+							</tr>
+						))]}
+					</tbody>
+				</table>
 			</div>
 		);
   	}
-}
-
+}  
 
 export default App;

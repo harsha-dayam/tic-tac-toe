@@ -1,0 +1,50 @@
+.tic-tac-toe {
+  text-align: center;
+
+  table {
+    width: 50%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto;
+
+    td {
+      border: 6px solid #222;
+      height: 150px;
+      width: 150px;
+  
+      &::after {
+        content: "";
+        font-size: 30px;
+      }
+  
+      &:first-of-type {
+        border-left-color: transparent;
+        border-top-color: transparent;
+      }
+  
+      &:nth-of-type(2) {
+        border-top-color: transparent;
+      }
+  
+      &:nth-of-type(3) {
+        border-right-color: transparent;
+        border-top-color: transparent;
+      }
+    }
+
+    tr:nth-of-type(3) td {
+      border-bottom-color: transparent;
+    }
+
+
+    .value1::after {
+      content: "X";
+      font-size: 30px;
+    }
+
+    .value0::after {
+      content: "O";
+      font-size: 30px;
+    }
+  }  
+}

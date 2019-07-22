@@ -2,59 +2,83 @@ import React from 'react';
 import './App.scss';
 
 class App extends React.Component {
-  constructor(props) {
-	super(props);
-	this.state = {
-		// 1 stands for X and 0 stands for O
-		currentValue: 1,
-		box: [
-			['', '', ''],
-			['', '', ''],
-			['', '', '']
-		]
+	constructor(props) {
+		super(props);
+		this.state = {
+			// 1 stands for X and 0 stands for O
+			currentValue: 1,
+			box: [
+				['', '', ''],
+				['', '', ''],
+				['', '', '']
+			]
+		}
+		this._handleClick = this.handleClick.bind(this);
+		this._checkWinner = this.checkWinner.bind(this);
 	}
-	this._handleClick = this.handleClick.bind(this); 
-	this._setUserValue = this.setUserValue.bind(this);  
-	this._checkWinner = this.checkWinner.bind(this);
-  }
 
-  checkWinner() {
-    // console.log(this.state.box);
-  }
+	checkWinner(boxCopy) {
+		let sum = "";
 
-  setUserValue (el, value) {
-	const { box } = this.state,
-		  boxCopy = JSON.parse(JSON.stringify(box)),
-		  x = el.dataset.row,
-		  y = el.dataset.column; // deep cloning since its an array or arrays
-		  
-	el.classList.add("value" + value);
-	boxCopy[x][y] = value;
-
-	this.setState({
-	  	box: boxCopy
-	}, ()=> {
-		this.checkWinner();
-	})
-  }
-
-  handleClick(e) {
-	const { currentValue } = this.state,
-		el = e.target;
-	debugger;
-			
-	if (!el.classList.contains("valueX") && !el.classList.contains("valueO")) {
-		if (currentValue === 1) {
-			this.setUserValue(el, "X");
-		} else {
-			this.setUserValue(el, "O");
+		for (let i = 0; i < boxCopy.length; i++) { // check for horizontal win
+			sum = boxCopy[i][0] + boxCopy[i][1] + boxCopy[i][2];
+			if (sum === 3) {
+				return 'X';
+			} else if (sum === 0) {
+				return 'O'
+			}
 		}
 
-		this.setState({
-			currentValue: currentValue ^ 1
-		})
+		for (let i = 0; i < boxCopy.length; i++) { // check for vertical win
+			sum = boxCopy[0][i] + boxCopy[1][i] + boxCopy[2][i];
+			if (sum === 3) {
+				return 'X';
+			} else if (sum === 0) {
+				return 'O'
+			}
+		}
+
+		// check for diagonal win
+		sum = boxCopy[0][0] + boxCopy[1][1] + boxCopy[2][2];
+		if (sum === 3) {
+			return 'X';
+		} else if (sum === 0) {
+			return 'O'
+		}
+
+		sum = boxCopy[2][0] + boxCopy[1][1] + boxCopy[0][2];
+		if (sum === 3) {
+			return 'X';
+		} else if (sum === 0) {
+			return 'O'
+		}
+
+		return '';
 	}
-  }
+
+	handleClick(e) {
+		const { currentValue, box } = this.state,
+			el = e.target,
+			boxCopy = JSON.parse(JSON.stringify(box)), // deep cloning since its an array or arrays
+			x = el.dataset.row,
+			y = el.dataset.column;
+		let winner;
+
+		if (!el.classList.contains("value1") && !el.classList.contains("value0")) {
+			el.classList.add("value" + currentValue);
+			boxCopy[x][y] = currentValue;
+
+			winner = this.checkWinner(boxCopy);
+			if (winner) {
+				alert(`Winner is ${winner}`);
+			}
+
+			this.setState({
+				currentValue: currentValue ^ 1,
+				box: boxCopy
+			})
+		}
+	}
 
   render() {
 		return (

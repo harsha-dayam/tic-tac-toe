@@ -37,12 +37,12 @@
     }
 
 
-    .valueX::after {
+    .value1::after {
       content: "X";
       font-size: 30px;
     }
 
-    .valueO::after {
+    .value0::after {
       content: "O";
       font-size: 30px;
     }

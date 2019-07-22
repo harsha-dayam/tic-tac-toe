@@ -8,13 +8,13 @@
     margin: 0 auto;
 
     td {
-      width: 33.333%;
       border: 6px solid #222;
-      padding: 75px;
+      height: 150px;
+      width: 150px;
   
       &::after {
         content: "";
-        display: block;
+        font-size: 30px;
       }
   
       &:first-of-type {
@@ -39,12 +39,12 @@
 
     .valueX::after {
       content: "X";
-      font-size: 14px;
+      font-size: 30px;
     }
 
     .valueO::after {
       content: "O";
-      font-size: 14px;
+      font-size: 30px;
     }
   }  
 }

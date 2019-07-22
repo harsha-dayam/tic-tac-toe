@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<div
+  className="tic-tac-toe"
+>
+  <table
+    id="board"
+  >
+    <tbody>
+      <tr
+        key="0"
+      >
+        <td
+          data-column={0}
+          data-row={0}
+          key="0"
+          onClick={[Function]}
+        />
+        <td
+          data-column={1}
+          data-row={0}
+          key="1"
+          onClick={[Function]}
+        />
+        <td
+          data-column={2}
+          data-row={0}
+          key="2"
+          onClick={[Function]}
+        />
+      </tr>
+      <tr
+        key="1"
+      >
+        <td
+          data-column={0}
+          data-row={1}
+          key="0"
+          onClick={[Function]}
+        />
+        <td
+          data-column={1}
+          data-row={1}
+          key="1"
+          onClick={[Function]}
+        />
+        <td
+          data-column={2}
+          data-row={1}
+          key="2"
+          onClick={[Function]}
+        />
+      </tr>
+      <tr
+        key="2"
+      >
+        <td
+          data-column={0}
+          data-row={2}
+          key="0"
+          onClick={[Function]}
+        />
+        <td
+          data-column={1}
+          data-row={2}
+          key="1"
+          onClick={[Function]}
+        />
+        <td
+          data-column={2}
+          data-row={2}
+          key="2"
+          onClick={[Function]}
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
